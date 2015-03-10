@@ -103,7 +103,8 @@ def simulateOneServer(filename):
 	avg_wait_time = sum(waiting_times)/len(waiting_times)
 	print "Average Wait Time for a single server:"
 	print avg_wait_time, "seconds"
-	print avg_wait_time * 1000000, "milliseconds"
+	print avg_wait_time * 1000, "milliseconds"
+	print avg_wait_time * 1000000, "microseconds"
 	print "Number of requests:", len(waiting_times)
 	
 def simulateManyServers(filename,num_servers):
@@ -154,7 +155,8 @@ def simulateManyServers(filename,num_servers):
 	avg_wait_time = sum(waiting_times)/len(waiting_times)
 	print "Average Wait Time for", num_servers, "servers"
 	print avg_wait_time, "seconds"
-	print avg_wait_time * 1000000, "milliseconds"
+	print avg_wait_time * 1000, "milliseconds"
+	print avg_wait_time * 1000000, "microseconds"
 	print "Number of requests:", len(waiting_times)
 	
 def simulateManyServersOneQueue(filename,num_servers):
@@ -200,15 +202,18 @@ def simulateManyServersOneQueue(filename,num_servers):
 	avg_wait_time = sum(waiting_times)/len(waiting_times)
 	print "Average Wait Time for", num_servers, "servers"
 	print avg_wait_time, "seconds"
-	print avg_wait_time * 1000000, "milliseconds"
+	print avg_wait_time * 1000, "milliseconds"
+	print avg_wait_time * 1000000, "microseconds"
+	print "Number of requests:", len(waiting_times)
 		
-if num_servers is not None:
+if num_servers == 1 or num_servers is None:
+	simulateOneServer(url)
+else:
 	print "Many Queues:"
 	simulateManyServers(url,num_servers)
 	print "One Queue:"
 	simulateManyServersOneQueue(url,num_servers)
-else:
-	simulateOneServer(url)
+
 	
 		
 	
